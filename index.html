@@ -1,38 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKS Project</title>
+    <title>SKS Project - AntarSayur</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: #ffffff;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 3.5em;
+            color: #764ba2;
             margin-bottom: 20px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-out;
         }
 
-        img {
-            width: 250px;
-            height: auto;
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .image-wrapper {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .image-wrapper:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .icon {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .rabbit {
+            font-size: 90px;
+            animation: hop 2s ease-in-out infinite;
+        }
+
+        @keyframes hop {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+        }
+
+        .carrot {
+            font-size: 80px;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+        }
+
+        .info-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .info-box p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(245, 87, 108, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .icon {
+                width: 120px;
+                height: 120px;
+            }
+
+            .rabbit {
+                font-size: 70px;
+            }
+
+            .carrot {
+                font-size: 60px;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>SKS Project</h1>
-    <img src="./kelinci2.png" alt="Bunny Logo">
+    <div class="container">
+        <h1>🎨 SKS Project</h1>
+        <p class="subtitle">Sistem Manajemen Pangan Digital</p>
+        <span class="badge">✨ Beta Version</span>
+
+        <div class="image-container">
+            <div class="image-wrapper">
+                <div class="icon">
+                    <div class="rabbit">🐰</div>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <div class="icon">
+                    <div class="carrot">🥕</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h2>🚀 AntarSayur Platform</h2>
+            <p>
+                Menghubungkan petani lokal dengan konsumen secara langsung. 
+                Sayur dan buah segar dengan harga transparan dan kualitas terjamin.
+            </p>
+        </div>
+
+        <a href="#" class="btn" onclick="alert('Coming Soon! 🎉'); return false;">
+            Mulai Sekarang →
+        </a>
+
+        <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #eee;">
+            <p style="color: #999; font-size: 0.9em;">
+                © 2025 SKS Project | Made with 💜 by Team SKS
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.9) {
+                const sparkle = document.createElement('div');
+                sparkle.style.cssText = `
+                    position: fixed;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    width: 5px;
+                    height: 5px;
+                    background: white;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    animation: sparkleAnim 1s ease-out forwards;
+                    z-index: 9999;
+                `;
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+        // Add CSS animation for sparkle
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleAnim {
+                0% {
+                    transform: scale(0) translateY(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1) translateY(-50px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('%c🐰 SKS Project Loaded Successfully! 🥕', 'color: #764ba2; font-size: 20px; font-weight: bold;');
+    </script>
 </body>
 </html>
-
-
-
